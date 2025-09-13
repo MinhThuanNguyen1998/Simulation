@@ -483,6 +483,8 @@ MonoBehaviour:
   m_Views:
   - id: 0
     prefab: {fileID: 4731271575452703349, guid: 7a529032ece9eeb409ef697083d983dc, type: 3}
+  - id: 1
+    prefab: {fileID: 7813762934045144548, guid: 2d51d756882d41d4a9158b624726d10b, type: 3}
   m_ParentCanvas: {fileID: 578395698}
 --- !u!1 &2013214438
 GameObject:

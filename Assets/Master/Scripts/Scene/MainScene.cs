@@ -18,7 +18,6 @@ public class MainScene : Singleton<MainScene>
     {
         LoadView(ViewId.Home);
     }
-
     public void LoadView(ViewId viewId)
     {
         Debug.Log($"Loading view: {viewId}");
