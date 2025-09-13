@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainScene : MonoBehaviour
+public class MainScene : Singleton<MainScene>
 {
     [System.Serializable]
     public class ViewPrefab
@@ -10,12 +10,10 @@ public class MainScene : MonoBehaviour
         public ViewId id;
         public GameObject prefab;
     }
-
     [SerializeField] private List<ViewPrefab> m_Views;
     [SerializeField] private Transform m_ParentCanvas;
 
     private GameObject m_CurrentView;
-
     private void Start()
     {
         LoadView(ViewId.Home);
@@ -23,6 +21,7 @@ public class MainScene : MonoBehaviour
 
     public void LoadView(ViewId viewId)
     {
+        Debug.Log($"Loading view: {viewId}");
         // Destroy current view if exists
         if (m_CurrentView != null)
         {
@@ -37,4 +36,11 @@ public class MainScene : MonoBehaviour
         }
         m_CurrentView = Instantiate(viewPrefab.prefab, m_ParentCanvas);
     }
+
+    public void QuitApplication()
+    {
+        Debug.Log("QuitApplication");
+        Application.Quit();
+    }
+
 }
