@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,9 @@ public class MainScene : Singleton<MainScene>
     private void Start()
     {
         LoadView(ViewId.Home);
+    }
+    private void Update()
+    {
     }
     public void LoadView(ViewId viewId)
     {
