@@ -2076,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_text
-      value: "N CHIA H\xCAT \nCHO 2"
+      value: "N CHIA H\u1EBET\nCHO 2"
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_fontSize
