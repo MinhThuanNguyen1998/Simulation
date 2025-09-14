@@ -8,6 +8,12 @@ public enum SC01ViewId
 }
 public class SC01 : SubViewManager<SC01ViewId>
 {
+    public override void Start()
+    {
+        base.Start();
+        ShowView(SC01ViewId.None);
+    }
+
     public void OnButtonGoToSC01_1()
     {
         ShowView(SC01ViewId.SC01_1);

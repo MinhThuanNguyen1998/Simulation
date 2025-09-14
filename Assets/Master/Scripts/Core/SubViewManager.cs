@@ -12,6 +12,18 @@ public class SubViewManager <T>: MonoBehaviour where T : System.Enum
     [SerializeField] private List<ViewItem> m_Views;
     private GameObject m_CurrentView;
 
+    public virtual void Start()
+    {
+        // Deactivate all views at start
+        foreach (var viewItem in m_Views)
+        {
+            if (viewItem.viewObject != null)
+            {
+                viewItem.viewObject.SetActive(false);
+            }
+        }
+    }
+
     public virtual void ShowView (T viewId)
     {
         Debug.Log($"Showing view: {viewId}");
