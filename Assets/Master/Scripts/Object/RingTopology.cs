@@ -16,20 +16,20 @@ public class RingTopology : NetworkTopology
     {
         if (m_Ellipse == null || m_CircleController == null) return;
 
-        float a = m_Ellipse.sizeDelta.x / 2f;
-        float b = m_Ellipse.sizeDelta.y / 2f;
+        float a = m_Ellipse.sizeDelta.x / 2f; 
+        float b = m_Ellipse.sizeDelta.y / 2f; 
 
-        Vector2 center = m_Ellipse.anchoredPosition;
+        Vector2 center = m_Ellipse.anchoredPosition; // Center of the ellipse
         float deltaAngle = m_Speed * Time.deltaTime;
 
-        m_Angle -= deltaAngle;
-        m_Travelled += deltaAngle;
+        m_Angle -= deltaAngle; // Move clockwise
+        m_Travelled += deltaAngle; // Track total angle travelled
 
-        float x = center.x + a * Mathf.Cos(m_Angle);
-        float y = center.y + b * Mathf.Sin(m_Angle);
+        float x = center.x + a * Mathf.Cos(m_Angle); // Parametric equation for ellipse
+        float y = center.y + b * Mathf.Sin(m_Angle); // Parametric equation for ellipse
         m_CircleController.anchoredPosition = new Vector2(x, y);
 
-        // Kiểm tra đã đi hết 1 vòng (2π radian = 360°)
+        // Check if a full loop is completed
         if (m_Travelled >= 2f * Mathf.PI)
         {
             SetMovingState(false, false, true);
@@ -42,7 +42,7 @@ public class RingTopology : NetworkTopology
 
         if (m_Ellipse == null || m_CircleController == null) return;
 
-        // Lấy bán trục ellipse
+        
         float a = m_Ellipse.sizeDelta.x / 2f;
         float b = m_Ellipse.sizeDelta.y / 2f;
 
