@@ -371,11 +371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db2b3cac79459c4783da50344421210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SC03: {fileID: 6218702818295032926}
   m_ButtonSendSignal: {fileID: 8072602020474801791}
-  m_Ellipse: {fileID: 8303878674371620405}
   m_CircleController: {fileID: 7607402369064204003}
   m_Speed: 1
+  m_SC03: {fileID: 6218702818295032926}
+  m_Ellipse: {fileID: 8303878674371620405}
 --- !u!1 &3508887336993753000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,11 +2200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnButtonSendSignal
+      value: SendSignal
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FollowWayPoinits, Assembly-CSharp
+      value: RingTopology, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

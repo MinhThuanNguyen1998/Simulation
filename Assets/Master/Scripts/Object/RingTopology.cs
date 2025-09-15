@@ -1,24 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class RingTopology : MonoBehaviour
+public class RingTopology : NetworkTopology
 {
+    [Header("Ring Settings")]
     [SerializeField] private SC03 m_SC03;
-    [SerializeField] private Button m_ButtonSendSignal;
     [SerializeField] private RectTransform m_Ellipse;   
-    [SerializeField] private RectTransform m_CircleController; 
-    [SerializeField] private float m_Speed = 1f; 
 
     private float m_Angle = 180f;
-    private bool m_IsMoving = false;
-    private float m_Travelled = 0f;
     private void Start()
     {
-        Reset();
+        ResetTopology();
     }
-    void Update()
+    protected override void UpdateMovement()
     {
-        if (!m_IsMoving) return;
         if (m_Ellipse == null || m_CircleController == null) return;
 
         float a = m_Ellipse.sizeDelta.x / 2f;
@@ -26,6 +21,7 @@ public class RingTopology : MonoBehaviour
 
         Vector2 center = m_Ellipse.anchoredPosition;
         float deltaAngle = m_Speed * Time.deltaTime;
+
         m_Angle -= deltaAngle;
         m_Travelled += deltaAngle;
 
@@ -39,7 +35,7 @@ public class RingTopology : MonoBehaviour
             SetMovingState(false, false, true);
         }
     }
-    private void Reset()
+    public override void ResetTopology()
     {
         //Debug.Log("ResetRingTopology");   
         SetMovingState(false, false, true);
@@ -57,25 +53,16 @@ public class RingTopology : MonoBehaviour
 
         m_CircleController.anchoredPosition = new Vector2(x, y);
     }
-    public void OnButtonSendSignal()
+    public override void SendSignal()
     {
         Debug.Log("OnButtonSendSignalRingTopology");
         SetMovingState(true, true, false);
     }
     public void OnButtonBackSC03()
     {
-        Reset();
+        ResetTopology();
         if (m_SC03 == null) return;
         m_SC03.OnBackSC03();   
-    }
-
-    private void SetMovingState(bool isMoving, bool activeCircleController, bool activeButton)
-    {
-        //Debug.Log("SetStateRingNetwork");
-        m_IsMoving = isMoving;
-        m_Travelled = 0f;
-        m_CircleController.gameObject.SetActive(activeCircleController);
-        m_ButtonSendSignal.interactable = activeButton;
     }
 }
         
