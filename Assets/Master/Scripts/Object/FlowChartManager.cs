@@ -3,7 +3,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlowChart : MonoBehaviour
+public class FlowChartManager : MonoBehaviour
 {
     [Header("Images True")]
     [SerializeField] private List<Image> m_ListTrueImages;
@@ -19,6 +19,8 @@ public class FlowChart : MonoBehaviour
     [SerializeField] private Toggle m_ToggleNTrue;
     [SerializeField] private Toggle m_ToggleNFalse;
 
+    [Header("SC01")]
+    [SerializeField] private SC01 m_SCO1;
     private int m_CurrentTrue = 0;
     private int m_CurrentFalse = 0;
 
@@ -27,7 +29,7 @@ public class FlowChart : MonoBehaviour
         ResetFlow();
     }
 
-    public void OnButtonNext()
+    public void OnButtonRunFlow()
     {
         //Debug.Log("OnButtonNext");
         m_ToggleNTrue.interactable = false;
@@ -69,5 +71,12 @@ public class FlowChart : MonoBehaviour
         m_ToggleNTrue.isOn = false;
         m_ToggleNFalse.isOn = false;
     }
+
+    public void OnButtonBackSC01()
+    {
+        if (m_SCO1 == null) return; 
+        m_SCO1.BackSC01();
+    }
+
 }
 

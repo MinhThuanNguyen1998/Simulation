@@ -1225,6 +1225,7 @@ MonoBehaviour:
   m_NormalColor: {r: 1, g: 0.75294125, b: 0, a: 1}
   m_ToggleNTrue: {fileID: 1320383011529412273}
   m_ToggleNFalse: {fileID: 5806154005214090388}
+  m_SCO1: {fileID: 896531940339137459}
 --- !u!1 &7259622903670148211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1334,7 @@ MonoBehaviour:
   m_NormalColor: {r: 1, g: 0.75294125, b: 0, a: 1}
   m_ToggleNTrue: {fileID: 244487211909799136}
   m_ToggleNFalse: {fileID: 1901327288137954779}
+  m_SCO1: {fileID: 896531940339137459}
 --- !u!1 &7689207064589496845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnButtonNext
+      value: OnButtonRunFlow
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2660,7 +2662,7 @@ PrefabInstance:
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 896531940339137459}
+      objectReference: {fileID: 3817891359200871086}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2671,7 +2673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SC01, Assembly-CSharp
+      value: FlowChart, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3597,7 +3599,7 @@ PrefabInstance:
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 896531940339137459}
+      objectReference: {fileID: 1070509877779911933}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3608,7 +3610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SC01, Assembly-CSharp
+      value: FlowChart, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4769,7 +4771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnButtonNext
+      value: OnButtonRunFlow
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4873,7 +4875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792505826563590604, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_Name
-      value: Button_CHAY_KHO
+      value: Button_CHAY_KHOI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -26,7 +26,7 @@ public class SC01 : SubViewManager<SC01ViewId>
     {
         MainScene.Instance.LoadView(ViewId.Home);
     }
-    public void OnButtonBackSC01()
+    public void BackSC01()
     {
         ShowView(SC01ViewId.None);
     }
