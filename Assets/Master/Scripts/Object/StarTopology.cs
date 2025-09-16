@@ -70,7 +70,6 @@ public class StarTopology : NetworkTopology
             }
         }
     }
-
     public override void ResetTopology()
     {
         SetMovingState(false, false, true);
