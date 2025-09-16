@@ -781,6 +781,7 @@ MonoBehaviour:
   m_ButtonSendSignal: {fileID: 8072602020474801791}
   m_CircleController: {fileID: 7607402369064204003}
   m_Speed: 100
+  m_SC03: {fileID: 6218702818295032926}
   m_NodeA: {fileID: 689387947596283325}
   m_NodeB: {fileID: 1851622395338364838}
   m_NodeC: {fileID: 5733812000832666319}
@@ -3192,11 +3193,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448953850980090546, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3972187040684339027, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
       propertyPath: m_Name
       value: DropDownA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200879033028999674, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.2965576
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200879033028999674, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.26330543
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200879033028999674, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 4219731907543666597, guid: d522e49d23ccf7b4bb8f9a2a57769d58, type: 3}
       propertyPath: m_Pivot.x
@@ -5196,6 +5209,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1519882705445797699}
+    - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -5205,7 +5222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FollowWayPoinits, Assembly-CSharp
+      value: StarTopology, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2194953260961670922, guid: c88223d6d68ba1c4e8adb7033413a251, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
