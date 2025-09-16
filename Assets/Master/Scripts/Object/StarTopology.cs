@@ -28,11 +28,14 @@ public class StarTopology : NetworkTopology
 
     public override void SendSignal()
     {
-        SetMovingState(true, true, false);
-
         m_CurrentStartNode = GetNodeFromDropdown(m_DropdownStartNode);
         m_CurrentEndNode = GetNodeFromDropdown(m_DropdownEndNode);
-
+        if (m_CurrentStartNode == m_CurrentEndNode)
+        {
+            PopupManager.Instance.ShowPopup(Config.Text_Doi_Gia_Tri, Config.Text_OK);
+            return;
+        }
+        SetMovingState(true, true, false);
         m_StartPoint = m_CurrentStartNode.position;
         m_EndPoint = m_Switch.position;
         m_IsMovingToSwitch = true;
@@ -43,8 +46,8 @@ public class StarTopology : NetworkTopology
     {
         if (m_IsMoving)
         {
-            m_Travelled += m_Speed * Time.deltaTime;
-            float ratio = m_Travelled / Vector3.Distance(m_StartPoint, m_EndPoint);
+            m_Travelled += m_Speed * Time.deltaTime; // Update travelled
+            float ratio = m_Travelled / Vector3.Distance(m_StartPoint, m_EndPoint); // Calculate the percentage of the distance traveled to the total distance
 
             m_CircleController.position = Vector3.Lerp(m_StartPoint, m_EndPoint, ratio);
 
@@ -59,7 +62,7 @@ public class StarTopology : NetworkTopology
                 }
                 else
                 {
-                    SetMovingState(false, true, true);
+                    SetMovingState(false, false, true); // Finish moving
                     //Debug.Log("Signal arrived at destination!");
                 }
             }
@@ -84,4 +87,6 @@ public class StarTopology : NetworkTopology
             default: return m_NodeA;
         }
     }
+
+  
 }
