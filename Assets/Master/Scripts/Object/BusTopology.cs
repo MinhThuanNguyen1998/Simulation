@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class BusTopology : NetworkTopology
 {
-    [Header("Ring settings")]
+    [Header("Ring Settings")]
     [SerializeField] private SC03 m_SC03;
+    [Header("Bus Settings")]
+    [SerializeField] private RectTransform m_BusA;
+    [SerializeField] private RectTransform m_BusB;
+    [SerializeField] private RectTransform m_BusC;
 
     [Header("Network Nodes")]
     [SerializeField] private RectTransform m_NodeA;
     [SerializeField] private RectTransform m_NodeB;
     [SerializeField] private RectTransform m_NodeC;
-
-    [Header("Bus Line Points")]
-    [SerializeField] private Transform m_BusPointA;
-    [SerializeField] private Transform m_BusPointB;
-    [SerializeField] private Transform m_BusPointC;
-
 
     [Header("UI Dropdowns")]
     [SerializeField] private TMP_Dropdown m_DropdownStartNode;
@@ -24,15 +22,14 @@ public class BusTopology : NetworkTopology
 
     private RectTransform m_CurrentStartNode;
     private RectTransform m_CurrentEndNode;
-    
+    private RectTransform m_CurrentStartBus;
+    private RectTransform m_CurrentEndBus;
+
     private Vector3 m_StartPoint;
     private Vector3 m_EndPoint;
-
-    private Transform m_CurrentStartBusPoint;
-    private Transform m_CurrentEndBusPoint;
-
-    [SerializeField] private List<Vector3> m_Path = new List<Vector3>();
-    private int m_CurrentPathIndex = 0;
+    private bool m_IsMovingToBus = false;
+    private bool m_IsMovingOnBus = false;
+    private bool m_IsMovingFromBus = false;
 
     private void Start()
     {
@@ -48,54 +45,18 @@ public class BusTopology : NetworkTopology
             PopupManager.Instance.ShowPopup(Config.Text_Doi_Gia_Tri, Config.Text_OK);
             return;
         }
-        m_CurrentStartBusPoint = GetBusPointFromNode(m_CurrentStartNode);
-        m_CurrentEndBusPoint = GetBusPointFromNode(m_CurrentEndNode);
-        BuildPath();
+
+        m_CurrentStartBus = GetBusFromNode(m_CurrentStartNode);
+        m_CurrentEndBus = GetBusFromNode(m_CurrentEndNode);
+
         SetMovingState(true, true, false);
-        m_CurrentPathIndex = 0;
-        MoveToNextPoint();
-      
-    }
-    private void MoveToNextPoint()
-    {
-        if (m_CurrentPathIndex < m_Path.Count - 1)
-        {
-            m_StartPoint = m_Path[m_CurrentPathIndex];
-            m_EndPoint = m_Path[m_CurrentPathIndex + 1];
-            m_Travelled = 0f;
-            m_CurrentPathIndex++;
-        }
-        else
-        {
 
-            SetMovingState(false, false, true);
-        }
-    }
-    private void BuildPath()
-    {
-        m_Path.Clear();
-        m_Path.Add(m_CurrentStartNode.position);
-        m_Path.Add(m_CurrentStartBusPoint.position);
-
-        float startX = m_CurrentStartBusPoint.position.x;
-        float endX = m_CurrentEndBusPoint.position.x;
-        if (startX < endX)
-        {
-           
-            if (m_BusPointA.position.x > startX && m_BusPointA.position.x < endX) m_Path.Add(m_BusPointA.position);
-            if (m_BusPointB.position.x > startX && m_BusPointB.position.x < endX) m_Path.Add(m_BusPointB.position);
-            if (m_BusPointC.position.x > startX && m_BusPointC.position.x < endX) m_Path.Add(m_BusPointC.position);
-            m_Path.Add(m_CurrentEndBusPoint.position);
-        }
-        else
-        {
-            if (m_BusPointC.position.x < startX && m_BusPointC.position.x > endX) m_Path.Add(m_BusPointC.position);
-            if (m_BusPointB.position.x < startX && m_BusPointB.position.x > endX) m_Path.Add(m_BusPointB.position);
-            if (m_BusPointA.position.x < startX && m_BusPointA.position.x > endX) m_Path.Add(m_BusPointA.position);
-
-            m_Path.Add(m_CurrentEndBusPoint.position);
-        }
-        m_Path.Add(m_CurrentEndNode.position);
+        m_StartPoint = m_CurrentStartNode.position;
+        m_EndPoint = m_CurrentStartBus.position;
+        m_IsMovingToBus = true;
+        m_IsMovingOnBus = false;
+        m_IsMovingFromBus = false;
+        m_Travelled = 0f;
     }
     protected override void UpdateMovement()
     {
@@ -104,9 +65,28 @@ public class BusTopology : NetworkTopology
             m_Travelled += m_Speed * Time.deltaTime;
             float ratio = m_Travelled / Vector3.Distance(m_StartPoint, m_EndPoint);
             m_CircleController.position = Vector3.Lerp(m_StartPoint, m_EndPoint, ratio);
-            if (ratio >= 1.0f)
+            if (ratio >= 1f)
             {
-                MoveToNextPoint();
+                if (m_IsMovingToBus)
+                {
+                    m_StartPoint = m_CurrentStartBus.position;
+                    m_EndPoint = m_CurrentEndBus.position;
+                    m_IsMovingToBus = false;
+                    m_IsMovingOnBus = true;
+                    m_Travelled = 0f;
+                }
+                else if(m_IsMovingOnBus)
+                {
+                    m_StartPoint = m_CurrentEndBus.position;
+                    m_EndPoint = m_CurrentEndNode.position;
+                    m_IsMovingOnBus = false;
+                    m_IsMovingFromBus = true;
+                    m_Travelled = 0f;
+                }
+                else if(m_IsMovingFromBus)
+                {
+                    SetMovingState(false, false, true);
+                }
             }
         }
     }
@@ -127,12 +107,12 @@ public class BusTopology : NetworkTopology
             default: return m_NodeA;
         }
     }
-    private Transform GetBusPointFromNode(RectTransform node)
+    private RectTransform GetBusFromNode(RectTransform node)
     {
-        if (node == m_NodeA) return m_BusPointA;
-        if (node == m_NodeB) return m_BusPointB;
-        if (node == m_NodeC) return m_BusPointC;
-        return null;
+        if (node == m_NodeA) return m_BusA;
+        if (node == m_NodeB) return m_BusB;
+        if (node == m_NodeC) return m_BusC;
+        return m_BusA;
     }
     public void OnButtonBackSC03()
     {
