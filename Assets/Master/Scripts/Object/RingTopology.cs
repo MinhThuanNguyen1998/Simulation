@@ -14,7 +14,7 @@ public class RingTopology : NetworkTopology
     }
     protected override void UpdateMovement()
     {
-        if (m_Ellipse == null || m_CircleController == null) return;
+        if (m_Ellipse == null || m_LetterController == null) return;
 
         float a = m_Ellipse.sizeDelta.x / 2f; 
         float b = m_Ellipse.sizeDelta.y / 2f; 
@@ -27,7 +27,7 @@ public class RingTopology : NetworkTopology
 
         float x = center.x + a * Mathf.Cos(m_Angle); // Parametric equation for ellipse
         float y = center.y + b * Mathf.Sin(m_Angle); // Parametric equation for ellipse
-        m_CircleController.anchoredPosition = new Vector2(x, y);
+        m_LetterController.anchoredPosition = new Vector2(x, y);
 
         // Check if a full loop is completed
         if (m_Travelled >= 2f * Mathf.PI)
@@ -40,7 +40,7 @@ public class RingTopology : NetworkTopology
         //Debug.Log("ResetRingTopology");   
         SetMovingState(false, false, true);
 
-        if (m_Ellipse == null || m_CircleController == null) return;
+        if (m_Ellipse == null || m_LetterController == null) return;
 
         
         float a = m_Ellipse.sizeDelta.x / 2f;
@@ -51,7 +51,7 @@ public class RingTopology : NetworkTopology
         float x = center.x + a * Mathf.Cos(m_Angle);
         float y = center.y + b * Mathf.Sin(m_Angle);
 
-        m_CircleController.anchoredPosition = new Vector2(x, y);
+        m_LetterController.anchoredPosition = new Vector2(x, y);
     }
     public override void SendSignal()
     {

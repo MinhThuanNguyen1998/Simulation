@@ -64,7 +64,7 @@ public class BusTopology : NetworkTopology
         {
             m_Travelled += m_Speed * Time.deltaTime;
             float ratio = m_Travelled / Vector3.Distance(m_StartPoint, m_EndPoint);
-            m_CircleController.position = Vector3.Lerp(m_StartPoint, m_EndPoint, ratio);
+            m_LetterController.position = Vector3.Lerp(m_StartPoint, m_EndPoint, ratio);
             if (ratio >= 1f)
             {
                 if (m_IsMovingToBus)
@@ -93,9 +93,9 @@ public class BusTopology : NetworkTopology
     public override void ResetTopology()
     {
         SetMovingState(false, false, true);
-        m_CircleController.gameObject.SetActive(true);
-        m_CircleController.position = GetNodeFromDropdown(m_DropdownStartNode).position;
-        m_CircleController.gameObject.SetActive(false);
+        m_LetterController.gameObject.SetActive(true);
+        m_LetterController.position = GetNodeFromDropdown(m_DropdownStartNode).position;
+        m_LetterController.gameObject.SetActive(false);
     }
     private RectTransform GetNodeFromDropdown(TMP_Dropdown dropdown)
     {

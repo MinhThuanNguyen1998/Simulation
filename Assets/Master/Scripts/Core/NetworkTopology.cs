@@ -5,7 +5,7 @@ public abstract class NetworkTopology : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] protected Button m_ButtonSendSignal;
-    [SerializeField] protected RectTransform m_CircleController;
+    [SerializeField] protected RectTransform m_LetterController;
 
     [Header("Movement Settings")]
     [SerializeField] protected float m_Speed = 1f;
@@ -20,9 +20,9 @@ public abstract class NetworkTopology : MonoBehaviour
         {
             m_Travelled = 0f;
         }
-        if (m_CircleController != null)
+        if (m_LetterController != null)
         {
-            m_CircleController.gameObject.SetActive(activeCircle);
+            m_LetterController.gameObject.SetActive(activeCircle);
         }
         if (m_ButtonSendSignal != null)
         {
