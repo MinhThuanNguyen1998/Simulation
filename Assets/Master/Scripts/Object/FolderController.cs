@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
 {
+    [SerializeField] private SC02_3_Tutorial_DeleteFolder m_SC02_3;
     [SerializeField] private Image m_HightLightImage;
     [SerializeField] private GameObject m_ContextMenu;
 
@@ -53,4 +54,12 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if(m_ContextMenu!=null) m_ContextMenu.SetActive(isActive);
     }
     
+    public void OnButtonDeleteFolder()
+    {
+        m_SC02_3.DeleteFolder();
+    }
+    public void OnButtonRenameFolder()
+    {
+        m_SC02_3.RenameFolder();
+    }
 }

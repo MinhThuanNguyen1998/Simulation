@@ -20,14 +20,14 @@ public class SC02_3_Tutorial_DeleteFolder : MonoBehaviour
         PopupManager.Instance.ShowPopup(PopupType.Tutorial, Config.Text_DeleteFolder, Config.Text_OK);
     }
 
-    public void OnButtonDeleteFolder()
+    public void DeleteFolder()
     {
         if (!m_Folder.activeSelf) return;
         m_Folder.SetActive(false);
         m_IsPressedRename = false;
     }
 
-    public void OnButtonRenameFolder()
+    public void RenameFolder()
     {
         m_IsPressedRename = true;
     }
