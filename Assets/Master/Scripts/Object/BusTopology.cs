@@ -42,7 +42,7 @@ public class BusTopology : NetworkTopology
 
         if (m_CurrentStartNode == m_CurrentEndNode)
         {
-            PopupManager.Instance.ShowPopup(Config.Text_Doi_Gia_Tri, Config.Text_OK);
+            PopupManager.Instance.ShowPopup(PopupType.Notification,Config.Text_Doi_Gia_Tri, Config.Text_OK);
             return;
         }
 
