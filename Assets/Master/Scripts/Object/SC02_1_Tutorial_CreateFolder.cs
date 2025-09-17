@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
@@ -10,7 +11,11 @@ public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
     [SerializeField] private Transform m_FolderParent;
 
     private GameObject m_Folder;
-    private bool IsPressRefresh = false;
+    private bool m_IsPressRefresh = false;
+    private void OnEnable()
+    {
+        ResetState();
+    }
     public void OnButtonIntroduction()
     {
         PopupManager.Instance.ShowPopup(PopupType.Tutorial, Config.Text_CreateFolder, Config.Text_OK);
@@ -18,33 +23,52 @@ public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
     public void OnButtonComplete()
     {
         Debug.Log("OnButtonComplete");
-        if (IsPressRefresh)
+        if (m_IsPressRefresh)
         {
             PopupManager.Instance.ShowPopup(PopupType.Notification,Config.Text_Thu_Lai, Config.Text_OK);
         }
-        if (m_Folder != null)
+        else if (m_Folder != null)
         {
             PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Hoan_Thanh, Config.Text_OK);
+        }
+        else
+        {
+            PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Can_Tao_Thu_Muc, Config.Text_OK);
         }
     }
     public void OnButtonCreateNewFolder()
     {
-        Debug.Log("OnButtonCreateFolder");
-        if (m_Folder == null)
-        {
-            m_Folder = Instantiate(m_FolderPrefab, m_FolderParent);
-            Debug.Log("Folder created");
-        }
-        IsPressRefresh = false;
+        if (m_Folder != null) return;
+        //Debug.Log("OnButtonCreateFolder");
+        m_Folder = Instantiate(m_FolderPrefab, m_FolderParent);
+        //Debug.Log("Folder created");
+        m_IsPressRefresh = false;
     }
     public void OnButtonRefresh()
     {
-        Debug.Log("OnButtonRefresh");
-        IsPressRefresh = true;
-        m_Folder = null;
+        //Debug.Log("OnButtonRefresh");
+        if (m_Folder == null)
+            m_IsPressRefresh = true;
+        StartCoroutine(RefreshRoutine());
+    }
+    private IEnumerator RefreshRoutine()
+    {
+        //m_IsRefreshing = true;
+        m_FolderParent.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        m_FolderParent.gameObject.SetActive(true);
     }
     public void OnBackSC02()
     {
         m_SC02.BackSC02();
+    }
+    private void ResetState()
+    {
+        if (m_Folder != null)
+        {
+            Destroy(m_Folder);
+            m_Folder = null;
+        }
+        m_IsPressRefresh = false;
     }
 }
