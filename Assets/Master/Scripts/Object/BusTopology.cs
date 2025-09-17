@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BusTopology : NetworkTopology
 {
-    [Header("Ring Settings")]
+    [Header("SC03")]
     [SerializeField] private SC03 m_SC03;
     [Header("Bus Settings")]
     [SerializeField] private RectTransform m_BusA;
