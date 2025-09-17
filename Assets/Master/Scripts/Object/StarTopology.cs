@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class StarTopology : NetworkTopology
 {
-    [Header("Ring Settings")]
+    [Header("Star Settings")]
     [SerializeField] private SC03 m_SC03;
     [Header("Network Nodes")]
     [SerializeField] private RectTransform m_NodeA;
@@ -92,7 +92,7 @@ public class StarTopology : NetworkTopology
     {
         ResetTopology();
         if (m_SC03 == null) return;
-        m_SC03.OnBackSC03();
+        m_SC03.BackSC03();
     }
 
 

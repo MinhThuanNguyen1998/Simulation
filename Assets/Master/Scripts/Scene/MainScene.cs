@@ -20,10 +20,10 @@ public class MainScene : Singleton<MainScene>
     }
     private void Update()
     {
-        if (Input.GetKeyDown("t"))
-        {
-            PopupManager.Instance.ShowPopup(PopupType.Tutorial,Config.Text_CreateFolder,Config.Text_OK);
-        }
+        //if (Input.GetKeyDown("t"))
+        //{
+        //    PopupManager.Instance.ShowPopup(PopupType.Tutorial,Config.Text_CreateFolder,Config.Text_OK);
+        //}
     }
     public void LoadView(ViewId viewId)
     {

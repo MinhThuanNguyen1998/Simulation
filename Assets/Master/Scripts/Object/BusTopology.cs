@@ -118,6 +118,6 @@ public class BusTopology : NetworkTopology
     {
         ResetTopology();
         if (m_SC03 == null) return;
-        m_SC03.OnBackSC03();
+        m_SC03.BackSC03();
     }
 }

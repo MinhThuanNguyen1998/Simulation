@@ -32,7 +32,7 @@ public class SC03 : SubViewManager<SC03ViewId>
     {
         MainScene.Instance.LoadView(ViewId.Home);
     }
-    public void OnBackSC03()
+    public void BackSC03()
     {
         ShowView(SC03ViewId.None);
     }

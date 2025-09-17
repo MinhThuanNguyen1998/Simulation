@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class RingTopology : NetworkTopology
 {
-    [Header("Ring Settings")]
+    [Header("SC03")]
     [SerializeField] private SC03 m_SC03;
     [SerializeField] private RectTransform m_Ellipse;   
 
@@ -62,7 +62,7 @@ public class RingTopology : NetworkTopology
     {
         ResetTopology();
         if (m_SC03 == null) return;
-        m_SC03.OnBackSC03();   
+        m_SC03.BackSC03();   
     }
 }
         
