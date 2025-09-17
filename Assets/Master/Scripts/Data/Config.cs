@@ -6,7 +6,7 @@ public class Config : MonoBehaviour
     public const string Text_Hoan_Thanh = "Hoàn thành !!!";
     public const string Text_Thu_Lai = "Sai thao tác !!!";
     public const string Text_Doi_Gia_Tri = "Đổi giá trị khác";
-    public const string Text_Can_Tao_Thu_Muc = "Cần tạo thư mục";
+    public const string Text_Chua_Hoan_Thanh = "Chưa hoàn thành";
 
     // Text button
     public const string Text_OK = "OK";

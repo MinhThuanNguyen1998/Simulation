@@ -2,9 +2,7 @@
 
 public class ContextMenuHandler : MonoBehaviour
 {
-
     [SerializeField] private GameObject m_ContextMenuPanel;
-
     private void Start()
     {
         ActiveContextMenu(false);
@@ -14,7 +12,13 @@ public class ContextMenuHandler : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Vector2 mousePos = Input.mousePosition;
-            m_ContextMenuPanel.transform.position = mousePos;
+            RectTransform panelRect = m_ContextMenuPanel.GetComponent<RectTransform>();
+            float panelWidth = panelRect.rect.width;
+            float panelHeight = panelRect.rect.height;
+            float clampedX = Mathf.Clamp(mousePos.x, panelWidth / 2, Screen.width - panelWidth / 2);
+            float clampedY = Mathf.Clamp(mousePos.y, panelHeight / 2, Screen.height - panelHeight / 2);
+
+            m_ContextMenuPanel.transform.position = new Vector2(clampedX, clampedY);
             ActiveContextMenu(true);
         }
         if (Input.GetMouseButtonDown(0) && m_ContextMenuPanel.activeSelf)

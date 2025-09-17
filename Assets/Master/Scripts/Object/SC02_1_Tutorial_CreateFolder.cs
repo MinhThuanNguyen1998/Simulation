@@ -33,7 +33,7 @@ public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
         }
         else
         {
-            PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Can_Tao_Thu_Muc, Config.Text_OK);
+            PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Chua_Hoan_Thanh, Config.Text_OK);
         }
     }
     public void OnButtonCreateNewFolder()
