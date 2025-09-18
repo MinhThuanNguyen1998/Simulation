@@ -43,10 +43,6 @@ public class MainScene : Singleton<MainScene>
         m_CurrentView = Instantiate(viewPrefab.prefab, m_ParentCanvas);
     }
 
-    public void QuitApplication()
-    {
-        Debug.Log("QuitApplication");
-        Application.Quit();
-    }
+    
 
 }
