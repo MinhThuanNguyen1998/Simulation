@@ -18,4 +18,9 @@ public class Home : MonoBehaviour
         Debug.Log("OnButtonGoToSC03");
         MainScene.Instance.LoadView(ViewId.SC03);
     }
+    public void OnButtonQuit()
+    {
+        Debug.Log("QuitApplication");
+        Application.Quit();
+    }
 }
