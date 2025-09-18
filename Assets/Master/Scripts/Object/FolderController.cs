@@ -7,14 +7,19 @@ using UnityEngine.UI;
 
 public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
 {
-    [SerializeField] private SC02_Tutorial_Task m_SC02_3;
     [SerializeField] private GameObject m_ContextMenu;
-
     [SerializeField] private Image m_HightLightImage;
     [SerializeField] private TMP_InputField m_RenameInputField;
     [SerializeField] private TextMeshProUGUI m_FolderNameText;
 
+    [SerializeField] private MonoBehaviour m_ServiceObject;
+    private IFolderService m_FolderService;
     private string m_OriginalName = "New Folder";
+
+    private void Awake()
+    {
+        m_FolderService = m_ServiceObject as IFolderService;
+    }
     private void Start()
     {
         ResetUI();
@@ -72,11 +77,11 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
     public void OnButtonDeleteFolder()
     {
-        m_SC02_3?.DeleteFolder();
+        m_FolderService?.DeleteFolder();
     }
     public void OnButtonRenameFolder()
     {
-        m_SC02_3?.RenameFolder();
+        m_FolderService?.RenameFolder();
         SetActiveUI(m_ContextMenu, false);
         SetActiveUI(m_RenameInputField, true);
         m_RenameInputField.text = m_FolderNameText.text;

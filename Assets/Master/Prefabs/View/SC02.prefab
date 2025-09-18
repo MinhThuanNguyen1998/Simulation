@@ -3033,11 +3033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6ac8531141b9d448f66133dbbd6383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SC02_3: {fileID: 1769380559293217554}
   m_ContextMenu: {fileID: 8537122166833722821}
   m_HightLightImage: {fileID: 6516774586256681217}
   m_RenameInputField: {fileID: 3904421638264338564}
   m_FolderNameText: {fileID: 3463451797783364567}
+  m_ServiceObject: {fileID: 1769380559293217554}
 --- !u!1 &6560268564711308407
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,11 +3374,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6ac8531141b9d448f66133dbbd6383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SC02_3: {fileID: 1062407363365060532}
   m_ContextMenu: {fileID: 2273256917070040435}
   m_HightLightImage: {fileID: 9178709451106876282}
   m_RenameInputField: {fileID: 2094848662048715230}
   m_FolderNameText: {fileID: 4285627887496490780}
+  m_ServiceObject: {fileID: 1062407363365060532}
 --- !u!1 &7919891281938096692
 GameObject:
   m_ObjectHideFlags: 0

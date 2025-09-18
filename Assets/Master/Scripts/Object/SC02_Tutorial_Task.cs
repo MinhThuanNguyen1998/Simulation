@@ -7,7 +7,7 @@ public enum TaskType
     Rename
 }
 
-public class SC02_Tutorial_Task : TutorialBase
+public class SC02_Tutorial_Task : TutorialBase,IFolderService
 {
     [Header("Tutorial Settings")]
     [SerializeField] private TaskType m_TaskType = TaskType.Delete;
