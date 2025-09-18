@@ -882,7 +882,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.3892, y: -6.1845}
-  m_SizeDelta: {x: 100, y: 130}
+  m_SizeDelta: {x: 120, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7389809610356177468
 CanvasRenderer:
@@ -1078,7 +1078,6 @@ MonoBehaviour:
   m_HightLightImage: {fileID: 1446732919081392092}
   m_RenameInputField: {fileID: 481661807646678087}
   m_FolderNameText: {fileID: 5736423433317180160}
-  m_OriginalFolderNameNameText: {fileID: 1457582728226778546}
 --- !u!1 &3278490246826108351
 GameObject:
   m_ObjectHideFlags: 0

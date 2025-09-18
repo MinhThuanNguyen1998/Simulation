@@ -16,16 +16,16 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private string m_OriginalName = "New Folder";
     private void Start()
     {
-        ActiveHighLightImage(false);
-        ActiveContextMenu(false);
-        ActiveInputField(false);
+        SetActiveUI(m_HightLightImage, false);
+        SetActiveUI(m_ContextMenu, false);
+        SetActiveUI(m_RenameInputField, false);
         m_OriginalName = m_FolderNameText.text;
     }
     private void OnEnable()
     {
-        ActiveHighLightImage(false);
-        ActiveContextMenu(false);
-        ActiveInputField(false);
+        SetActiveUI(m_HightLightImage, false);
+        SetActiveUI(m_ContextMenu, false);
+        SetActiveUI(m_RenameInputField, false);
         m_FolderNameText.text = m_OriginalName;
     }
     private void Update()
@@ -35,18 +35,18 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
             GameObject clickedObj = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             if (clickedObj == null || !clickedObj.transform.IsChildOf(m_ContextMenu.transform))
             {
-                ActiveContextMenu(false);
+                SetActiveUI(m_ContextMenu, false);
             }
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ActiveHighLightImage(true);
+        SetActiveUI(m_HightLightImage, true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ActiveHighLightImage(false);
+        SetActiveUI(m_HightLightImage, false);
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -56,24 +56,26 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
     }
 
-    private void ActiveHighLightImage(bool isActive)
-    {
-        if(m_HightLightImage != null) m_HightLightImage.enabled = isActive;
-    }
-    private void ActiveContextMenu(bool isActive)
-    {
-        if(m_ContextMenu!=null) m_ContextMenu.SetActive(isActive);
-    }
-    private void ActiveInputField(bool isActive)
-    {
-        if (m_RenameInputField != null && m_FolderNameText != null) m_RenameInputField.gameObject.SetActive(isActive);
 
-    }
-
-    private void ActiveContent(GameObject gameObject, bool isActive)
+    private void SetActiveUI(UnityEngine.Object target, bool isActive)
     {
-        gameObject.SetActive(isActive);
+        if(target == null) return;
+        switch (target)
+        {
+            case UnityEngine.UI.Image image:
+                image.enabled = isActive;
+                break;
+
+            case GameObject go:
+                go.SetActive(isActive);
+                break;
+
+            case TMP_InputField tmpInputField:
+                tmpInputField.gameObject.SetActive(isActive);
+                break;
+        }
     }
+    
     public void OnButtonDeleteFolder()
     {
         m_SC02_3.DeleteFolder();
@@ -81,8 +83,8 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnButtonRenameFolder()
     {
         m_SC02_3.RenameFolder();
-        ActiveContextMenu(false);
-        ActiveInputField(true);
+        SetActiveUI(m_ContextMenu, false);
+        SetActiveUI(m_RenameInputField, true);
         m_RenameInputField.text = m_FolderNameText.text;
         m_RenameInputField.Select(); // Select this input field in the EventSystem
         m_RenameInputField.ActivateInputField();// Focus the input field so the user can start typing immediately
@@ -95,11 +97,10 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (!string.IsNullOrEmpty(newName))
         {
-            if (newName.Length > 10)
-                newName = newName.Substring(0, 10) + "...";
+            if (newName.Length > 8)
+                newName = newName.Substring(0, 8) + "...";
             m_FolderNameText.text = newName;
         }
-        ActiveInputField(false);
-
+        SetActiveUI(m_RenameInputField, false);
     }
 }
