@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_NormalColor: {r: 1, g: 0.75294125, b: 0, a: 1}
   m_ToggleNTrue: {fileID: 1320383011529412273}
   m_ToggleNFalse: {fileID: 5806154005214090388}
-  m_SCO1: {fileID: 896531940339137459}
+  m_SceneController: {fileID: 896531940339137459}
 --- !u!1 &7259622903670148211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_NormalColor: {r: 1, g: 0.75294125, b: 0, a: 1}
   m_ToggleNTrue: {fileID: 244487211909799136}
   m_ToggleNFalse: {fileID: 1901327288137954779}
-  m_SCO1: {fileID: 896531940339137459}
+  m_SceneController: {fileID: 896531940339137459}
 --- !u!1 &7689207064589496845
 GameObject:
   m_ObjectHideFlags: 0

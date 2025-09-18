@@ -7,7 +7,7 @@ public enum SC03ViewId
     SC03_2,
     SC03_3
 }
-public class SC03 : SubViewManager<SC03ViewId>
+public class SC03 : SubViewManager<SC03ViewId>, ISceneController
 {
     public override void Start()
     {
@@ -32,7 +32,7 @@ public class SC03 : SubViewManager<SC03ViewId>
     {
         MainScene.Instance.LoadView(ViewId.Home);
     }
-    public void BackSC03()
+    public void BackPreviousScene()
     {
         ShowView(SC03ViewId.None);
     }

@@ -762,7 +762,7 @@ MonoBehaviour:
   m_ButtonSendSignal: {fileID: 3097400086955696378}
   m_LetterController: {fileID: 3838516961942595042}
   m_Speed: 100
-  m_SC03: {fileID: 6218702818295032926}
+  m_SceneController: {fileID: 6218702818295032926}
   m_NodeA: {fileID: 689387947596283325}
   m_NodeB: {fileID: 1851622395338364838}
   m_NodeC: {fileID: 3368865506182847229}
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_ButtonSendSignal: {fileID: 7446304409091411816}
   m_LetterController: {fileID: 2156992976334345269}
   m_Speed: 1
-  m_SC03: {fileID: 6218702818295032926}
+  m_SceneController: {fileID: 6218702818295032926}
   m_Ellipse: {fileID: 8303878674371620405}
 --- !u!1 &3508887336993753000
 GameObject:
@@ -2765,7 +2765,7 @@ MonoBehaviour:
   m_ButtonSendSignal: {fileID: 6894374100769558516}
   m_LetterController: {fileID: 2071869124333091717}
   m_Speed: 100
-  m_SC03: {fileID: 6218702818295032926}
+  m_SceneController: {fileID: 6218702818295032926}
   m_BusA: {fileID: 3748576899340283180}
   m_BusB: {fileID: 325061608183239811}
   m_BusC: {fileID: 2722506296733269417}

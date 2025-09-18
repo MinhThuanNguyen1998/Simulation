@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class NetworkTopology : MonoBehaviour
@@ -10,8 +10,9 @@ public abstract class NetworkTopology : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] protected float m_Speed = 1f;
     [Header("Scene Controller")]
-    [SerializeField] protected SC03 m_SC03;
+    [SerializeField] protected MonoBehaviour m_SceneController; 
 
+    private ISceneController SceneController => m_SceneController as ISceneController;
     protected bool m_IsMoving = false;
     protected float m_Travelled = 0f;
 
@@ -47,7 +48,6 @@ public abstract class NetworkTopology : MonoBehaviour
     public void OnButtonBackSC03()
     {
         ResetTopology();
-        if (m_SC03 == null) return;
-        m_SC03.BackSC03();
+        SceneController?.BackPreviousScene();
     }
 }

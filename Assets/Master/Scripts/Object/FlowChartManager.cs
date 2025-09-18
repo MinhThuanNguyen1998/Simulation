@@ -19,8 +19,10 @@ public class FlowChartManager : MonoBehaviour
     [SerializeField] private Toggle m_ToggleNTrue;
     [SerializeField] private Toggle m_ToggleNFalse;
 
-    [Header("SC01")]
-    [SerializeField] private SC01 m_SCO1;
+    [Header("Scene Controller")]
+    [SerializeField] protected MonoBehaviour m_SceneController;
+
+    private ISceneController SceneController => m_SceneController as ISceneController;
     private int m_CurrentTrue = 0;
     private int m_CurrentFalse = 0;
 
@@ -74,8 +76,7 @@ public class FlowChartManager : MonoBehaviour
 
     public void OnButtonBackSC01()
     {
-        if (m_SCO1 == null) return; 
-        m_SCO1.BackSC01();
+        SceneController?.BackPreviousScene();
     }
 
 }
