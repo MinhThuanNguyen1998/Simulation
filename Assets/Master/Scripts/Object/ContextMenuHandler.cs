@@ -19,6 +19,7 @@ public class ContextMenuHandler : MonoBehaviour
             float clampedY = Mathf.Clamp(mousePos.y, panelHeight / 2, Screen.height - panelHeight / 2);
 
             m_ContextMenuPanel.transform.position = new Vector2(clampedX, clampedY);
+            m_ContextMenuPanel.transform.SetAsLastSibling();
             ActiveContextMenu(true);
         }
         if (Input.GetMouseButtonDown(0) && m_ContextMenuPanel.activeSelf)
