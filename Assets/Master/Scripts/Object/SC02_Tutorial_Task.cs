@@ -59,7 +59,10 @@ public class SC02_Tutorial_Task : MonoBehaviour
         else if (m_TaskType == TaskType.Rename)
         {
             if (!m_Folder.activeSelf)
+            {
                 PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Thu_Lai, Config.Text_OK);
+                ResetState(); // Try it again
+            }
             else if (m_IsPressedRename)
                 PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Hoan_Thanh, Config.Text_OK);
             else
