@@ -529,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_fontSize
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_fontStyle
@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7779852762023028790, guid: 8a62522f9ffa00744aec9626d46303dd, type: 3}
       propertyPath: m_HorizontalAlignment
