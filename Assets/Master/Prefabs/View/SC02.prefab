@@ -2939,8 +2939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SC02: {fileID: 8189669481058640628}
-  m_Folder: {fileID: 6541315140197887670}
   m_TaskType: 1
+  m_Folder: {fileID: 6541315140197887670}
 --- !u!1 &6541315140197887670
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,8 +3727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SC02: {fileID: 8189669481058640628}
-  m_Folder: {fileID: 7711256190113440018}
   m_TaskType: 0
+  m_Folder: {fileID: 7711256190113440018}
 --- !u!1001 &354956841251912700
 PrefabInstance:
   m_ObjectHideFlags: 0

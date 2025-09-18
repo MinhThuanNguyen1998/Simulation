@@ -1,26 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
+public class SC02_1_Tutorial_CreateFolder : TutorialBase
 {
-    [Header("SC02")] 
-    [SerializeField] private SC02 m_SC02;
-
     [Header("UI Prefabs")]
     [SerializeField] private GameObject m_FolderPrefab;
     [SerializeField] private Transform m_FolderParent;
-
     private GameObject m_Folder;
     private bool m_IsPressedRefresh = false;
-    private void OnEnable()
-    {
-        ResetState();
-    }
-    public void OnButtonIntroduction()
+    
+    public override void OnButtonIntroduction()
     {
         PopupManager.Instance.ShowPopup(PopupType.Tutorial, Config.Text_CreateFolder, Config.Text_OK);
     }
-    public void OnButtonComplete()
+    public override void OnButtonComplete()
     {
         Debug.Log("OnButtonComplete");
         if (m_IsPressedRefresh)
@@ -57,11 +50,7 @@ public class SC02_1_Tutorial_CreateFolder : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         m_FolderParent.gameObject.SetActive(true);
     }
-    public void OnBackSC02()
-    {
-        m_SC02.BackSC02();
-    }
-    private void ResetState()
+    protected override void ResetState()
     {
         if (m_Folder != null)
         {

@@ -7,23 +7,15 @@ public enum TaskType
     Rename
 }
 
-public class SC02_Tutorial_Task : MonoBehaviour
+public class SC02_Tutorial_Task : TutorialBase
 {
-    [Header("SC02")]
-    [SerializeField] private SC02 m_SC02;
-
-    [Header("UI Prefabs")]
-    [SerializeField] private GameObject m_Folder;
-
     [Header("Tutorial Settings")]
     [SerializeField] private TaskType m_TaskType = TaskType.Delete;
 
+    [SerializeField]private GameObject m_Folder;
     private bool m_IsPressedRename = false;
-    private void OnEnable()
-    {
-        ResetState();
-    }
-    public void OnButtonIntroduction()
+
+    public override void OnButtonIntroduction()
     {
         string text = (m_TaskType == TaskType.Delete)? Config.Text_DeleteFolder : Config.Text_RenameFolder;
         PopupManager.Instance.ShowPopup(PopupType.Tutorial, text, Config.Text_OK);
@@ -38,7 +30,7 @@ public class SC02_Tutorial_Task : MonoBehaviour
     {
         m_IsPressedRename = true;
     }
-    public void OnButtonComplete()
+    public override void OnButtonComplete()
     {
         Debug.Log("OnButtonComplete");
         if (m_TaskType == TaskType.Delete)
@@ -69,14 +61,11 @@ public class SC02_Tutorial_Task : MonoBehaviour
                 PopupManager.Instance.ShowPopup(PopupType.Notification, Config.Text_Chua_Hoan_Thanh, Config.Text_OK);
         }
     }
-    private void ResetState()
+    protected override void ResetState()
     {
         m_IsPressedRename = false;
         if (m_Folder != null) m_Folder.SetActive(true);
 
     }
-    public void OnBackSC02()
-    {
-        m_SC02.BackSC02();
-    }
+    
 }
