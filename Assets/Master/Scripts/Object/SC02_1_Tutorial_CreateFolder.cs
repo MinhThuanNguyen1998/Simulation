@@ -6,6 +6,7 @@ public class SC02_1_Tutorial_CreateFolder : TutorialBase
     [Header("UI Prefabs")]
     [SerializeField] private GameObject m_FolderPrefab;
     [SerializeField] private Transform m_FolderParent;
+
     private GameObject m_Folder;
     private bool m_IsPressedRefresh = false;
     

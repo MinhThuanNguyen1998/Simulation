@@ -12,7 +12,7 @@ public class SC02_Tutorial_Task : TutorialBase
     [Header("Tutorial Settings")]
     [SerializeField] private TaskType m_TaskType = TaskType.Delete;
 
-    [SerializeField]private GameObject m_Folder;
+    [SerializeField] private GameObject m_Folder;
     private bool m_IsPressedRename = false;
 
     public override void OnButtonIntroduction()
@@ -65,7 +65,5 @@ public class SC02_Tutorial_Task : TutorialBase
     {
         m_IsPressedRename = false;
         if (m_Folder != null) m_Folder.SetActive(true);
-
-    }
-    
+    }  
 }
