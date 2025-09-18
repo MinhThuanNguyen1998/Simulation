@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
 {
-    [SerializeField] private SC02_3_Tutorial_DeleteFolder m_SC02_3;
+    [SerializeField] private SC02_Tutorial_Task m_SC02_3;
     [SerializeField] private GameObject m_ContextMenu;
 
     [SerializeField] private Image m_HightLightImage;
