@@ -13,19 +13,16 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private Image m_HightLightImage;
     [SerializeField] private TMP_InputField m_RenameInputField;
     [SerializeField] private TextMeshProUGUI m_FolderNameText;
+
     private string m_OriginalName = "New Folder";
     private void Start()
     {
-        SetActiveUI(m_HightLightImage, false);
-        SetActiveUI(m_ContextMenu, false);
-        SetActiveUI(m_RenameInputField, false);
+        ResetUI();
         m_OriginalName = m_FolderNameText.text;
     }
     private void OnEnable()
     {
-        SetActiveUI(m_HightLightImage, false);
-        SetActiveUI(m_ContextMenu, false);
-        SetActiveUI(m_RenameInputField, false);
+        ResetUI();
         m_FolderNameText.text = m_OriginalName;
     }
     private void Update()
@@ -33,11 +30,31 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && m_ContextMenu.activeSelf)
         {
             GameObject clickedObj = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            if (clickedObj == null || !clickedObj.transform.IsChildOf(m_ContextMenu.transform))
-            {
-                SetActiveUI(m_ContextMenu, false);
-            }
+            if (clickedObj == null || !clickedObj.transform.IsChildOf(m_ContextMenu.transform)) SetActiveUI(m_ContextMenu, false);
+
         }
+    }
+    private void SetActiveUI(UnityEngine.Object target, bool isActive)
+    {
+        if (target == null) return;
+        switch (target)
+        {
+            case UnityEngine.UI.Image image:
+                image.enabled = isActive;
+                break;
+            case GameObject go:
+                go.SetActive(isActive);
+                break;
+            case TMP_InputField tmpInputField:
+                tmpInputField.gameObject.SetActive(isActive);
+                break;
+        }
+    }
+    private void ResetUI()
+    {
+        SetActiveUI(m_HightLightImage, false);
+        SetActiveUI(m_ContextMenu, false);
+        SetActiveUI(m_RenameInputField, false);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -50,39 +67,16 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            m_ContextMenu.SetActive(true);
-        }
+        if (eventData.button == PointerEventData.InputButton.Right) SetActiveUI(m_ContextMenu, true);
+
     }
-
-
-    private void SetActiveUI(UnityEngine.Object target, bool isActive)
-    {
-        if(target == null) return;
-        switch (target)
-        {
-            case UnityEngine.UI.Image image:
-                image.enabled = isActive;
-                break;
-
-            case GameObject go:
-                go.SetActive(isActive);
-                break;
-
-            case TMP_InputField tmpInputField:
-                tmpInputField.gameObject.SetActive(isActive);
-                break;
-        }
-    }
-    
     public void OnButtonDeleteFolder()
     {
-        m_SC02_3.DeleteFolder();
+        m_SC02_3?.DeleteFolder();
     }
     public void OnButtonRenameFolder()
     {
-        m_SC02_3.RenameFolder();
+        m_SC02_3?.RenameFolder();
         SetActiveUI(m_ContextMenu, false);
         SetActiveUI(m_RenameInputField, true);
         m_RenameInputField.text = m_FolderNameText.text;
@@ -92,7 +86,6 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         m_RenameInputField.onEndEdit.RemoveAllListeners();
         m_RenameInputField.onEndEdit.AddListener(OnRenameSubmit);
     }
-
     private void OnRenameSubmit(string newName)
     {
         if (!string.IsNullOrEmpty(newName))
