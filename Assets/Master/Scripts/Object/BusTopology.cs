@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BusTopology : NetworkTopology
 {
-    [Header("SC03")]
-    [SerializeField] private SC03 m_SC03;
     [Header("Bus Settings")]
     [SerializeField] private RectTransform m_BusA;
     [SerializeField] private RectTransform m_BusB;
@@ -114,10 +112,5 @@ public class BusTopology : NetworkTopology
         if (node == m_NodeC) return m_BusC;
         return m_BusA;
     }
-    public void OnButtonBackSC03()
-    {
-        ResetTopology();
-        if (m_SC03 == null) return;
-        m_SC03.BackSC03();
-    }
+   
 }

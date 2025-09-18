@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class RingTopology : NetworkTopology
 {
-    [Header("SC03")]
-    [SerializeField] private SC03 m_SC03;
     [SerializeField] private RectTransform m_Ellipse;   
 
     private float m_Angle = 180f;
@@ -58,12 +56,7 @@ public class RingTopology : NetworkTopology
         Debug.Log("OnButtonSendSignalRingTopology");
         SetMovingState(true, true, false);
     }
-    public void OnButtonBackSC03()
-    {
-        ResetTopology();
-        if (m_SC03 == null) return;
-        m_SC03.BackSC03();   
-    }
+   
 }
         
 

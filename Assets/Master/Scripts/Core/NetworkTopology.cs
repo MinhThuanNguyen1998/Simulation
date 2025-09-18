@@ -9,6 +9,8 @@ public abstract class NetworkTopology : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] protected float m_Speed = 1f;
+    [Header("Scene Controller")]
+    [SerializeField] protected SC03 m_SC03;
 
     protected bool m_IsMoving = false;
     protected float m_Travelled = 0f;
@@ -41,4 +43,11 @@ public abstract class NetworkTopology : MonoBehaviour
     protected abstract void UpdateMovement();
     public abstract void ResetTopology();
     public abstract void SendSignal();
+
+    public void OnButtonBackSC03()
+    {
+        ResetTopology();
+        if (m_SC03 == null) return;
+        m_SC03.BackSC03();
+    }
 }
