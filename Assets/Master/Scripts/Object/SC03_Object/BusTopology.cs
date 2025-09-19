@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BusTopology : NetworkTopology
+public class BusTopology : DropDownHandlerStar_Bus_Topology
 {
     [Header("Bus Settings")]
     [SerializeField] private RectTransform m_BusA;
@@ -14,11 +14,6 @@ public class BusTopology : NetworkTopology
     [SerializeField] private RectTransform m_NodeA;
     [SerializeField] private RectTransform m_NodeB;
     [SerializeField] private RectTransform m_NodeC;
-
-    [Header("UI Dropdowns")]
-    [SerializeField] private TMP_Dropdown m_DropdownStartNode;
-    [SerializeField] private TMP_Dropdown m_DropdownEndNode;
-
     private RectTransform m_CurrentStartNode;
     private RectTransform m_CurrentEndNode;
     private RectTransform m_CurrentStartBus;
@@ -26,30 +21,15 @@ public class BusTopology : NetworkTopology
 
     private Vector3 m_StartPoint;
     private Vector3 m_EndPoint;
+
     private bool m_IsMovingToBus = false;
     private bool m_IsMovingOnBus = false;
     private bool m_IsMovingFromBus = false;
-
-    private void Awake()
-    {
-        if (m_DropdownStartNode != null)
-        {
-            m_DropdownStartNode.onValueChanged.AddListener(OnValueChanged);
-        }
-        if (m_DropdownEndNode != null)
-        {
-            m_DropdownEndNode.onValueChanged.AddListener(OnValueChanged);
-        }
-    }
-
     private void Start()
     {
         ResetTopology();
     }
-    private void OnValueChanged(int value)
-    {
-        AudioManager.Instance.PlayOnShot(SoundType.Toggle);
-    }
+   
     public override void SendSignal()
     {
         m_CurrentStartNode = GetNodeFromDropdown(m_DropdownStartNode);

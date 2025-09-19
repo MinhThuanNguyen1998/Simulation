@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StarTopology : NetworkTopology
+public class StarTopology : DropDownHandlerStar_Bus_Topology
 {
     [Header("Network Nodes")]
     [SerializeField] private RectTransform m_NodeA;
@@ -10,37 +10,17 @@ public class StarTopology : NetworkTopology
     [SerializeField] private RectTransform m_NodeC;
     [SerializeField] private RectTransform m_Switch;
 
-    [Header("UI Dropdowns")]
-    [SerializeField] private TMP_Dropdown m_DropdownStartNode;
-    [SerializeField] private TMP_Dropdown m_DropdownEndNode;
-
     private RectTransform m_CurrentStartNode;
     private RectTransform m_CurrentEndNode;
 
     private Vector3 m_StartPoint;
     private Vector3 m_EndPoint;
     private bool m_IsMovingToSwitch = false;
-    private void Awake()
-    {
-        if (m_DropdownStartNode != null)
-        {
-            m_DropdownStartNode.onValueChanged.AddListener(OnValueChanged);
-        }
-        if (m_DropdownEndNode != null)
-        {
-            m_DropdownEndNode.onValueChanged.AddListener(OnValueChanged);
-        }
-    }
 
     private void Start()
     {
         ResetTopology();
     }
-    private void OnValueChanged(int value)
-    {
-        AudioManager.Instance.PlayOnShot(SoundType.Toggle);
-    }
-
     public override void SendSignal()
     {
         m_CurrentStartNode = GetNodeFromDropdown(m_DropdownStartNode);
