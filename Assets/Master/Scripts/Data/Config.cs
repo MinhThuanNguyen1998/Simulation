@@ -7,6 +7,8 @@ public class Config : MonoBehaviour
     public const string Text_Thu_Lai = "Sai thao tác.\r\n Đọc lại hướng dẫn !!!";
     public const string Text_Doi_Gia_Tri = "Đổi giá trị khác!!!";
     public const string Text_Chua_Hoan_Thanh = "Chưa hoàn thành!!!";
+    public const string Text_Bo_Trong_Ten = "Lỗi bỏ trống tên";
+    public const string Text_Ky_Tu_Khong_Hop_le = "Lỗi ký tự";
 
     // Text button
     public const string Text_OK = "OK";
