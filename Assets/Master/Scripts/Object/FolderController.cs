@@ -95,8 +95,8 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (!string.IsNullOrEmpty(newName))
         {
-            if (newName.Length > 8)
-                newName = newName.Substring(0, 8) + "...";
+            if (newName.Length > 13)
+                newName = newName.Substring(0, 13) + "...";
             m_FolderNameText.text = newName;
         }
         SetActiveUI(m_RenameInputField, false);
