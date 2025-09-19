@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 600
+    m_Left: 550
     m_Right: 50
     m_Top: 200
     m_Bottom: 200
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 560
+    m_Left: 520
     m_Right: 50
     m_Top: 200
     m_Bottom: 200
