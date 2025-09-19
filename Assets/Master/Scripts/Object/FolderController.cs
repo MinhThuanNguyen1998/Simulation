@@ -91,13 +91,18 @@ public class FolderController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         m_RenameInputField.onEndEdit.RemoveAllListeners();
         m_RenameInputField.onEndEdit.AddListener(OnRenameSubmit);
     }
-    private void OnRenameSubmit(string newName)
+    private void OnRenameSubmit(string inputName)
     {
-        if (!string.IsNullOrEmpty(newName))
+        string currentName = m_FolderNameText.text;
+        if (!FolderNameValidator.Validate(inputName, out string validatedName, out string errorMessage))
         {
-            if (newName.Length > 13)
-                newName = newName.Substring(0, 13) + "...";
-            m_FolderNameText.text = newName;
+            
+            PopupManager.Instance.ShowPopup(PopupType.Notification,errorMessage,Config.Text_OK);
+            m_FolderNameText.text = currentName;
+        }
+        else
+        {
+            m_FolderNameText.text = validatedName;
         }
         SetActiveUI(m_RenameInputField, false);
     }
