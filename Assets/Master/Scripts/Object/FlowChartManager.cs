@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +31,17 @@ public class FlowChartManager : MonoBehaviour
     {
         ResetFlow();
     }
+    private void Start()
+    {
+        m_ToggleNTrue.onValueChanged.AddListener(OnToggleChanged);
+        m_ToggleNFalse.onValueChanged.AddListener(OnToggleChanged);
+    }
+    private void OnToggleChanged(bool isOn)
+    {
+        if (!isOn) return;
 
+        ResetFlow();
+    }
     public void OnButtonRunFlow()
     {
         //Debug.Log("OnButtonNext");
@@ -53,7 +64,11 @@ public class FlowChartManager : MonoBehaviour
         list[currentIndex].color = m_HighlighColor;
         currentIndex++;
         if (currentIndex >= list.Count)
+        {
             currentIndex = 0;
+            m_ToggleNTrue.interactable = true;
+            m_ToggleNFalse.interactable = true;
+        }
     }
     public void ResetFlow()
     {
@@ -69,15 +84,11 @@ public class FlowChartManager : MonoBehaviour
 
         m_ToggleNTrue.interactable = true;
         m_ToggleNFalse.interactable = true;
-
-        m_ToggleNTrue.isOn = false;
-        m_ToggleNFalse.isOn = false;
     }
 
     public void OnButtonBackSC01()
     {
         SceneController?.BackPreviousScene();
     }
-
 }
 
