@@ -39,7 +39,7 @@ public class FlowChartManager : MonoBehaviour
     private void OnToggleChanged(bool isOn)
     {
         if (!isOn) return;
-
+        AudioManager.Instance.PlayOnShot(SoundType.Toggle);
         ResetFlow();
     }
     public void OnButtonRunFlow()

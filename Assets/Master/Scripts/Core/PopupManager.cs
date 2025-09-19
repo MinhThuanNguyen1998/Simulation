@@ -19,6 +19,7 @@ public class PopupManager : Singleton<PopupManager>
         {
             case PopupType.Notification:
                 prefab = m_NotificationPopupPrefab;
+                AudioManager.Instance.PlayOnShot(SoundType.Popup);
                 break;
             case PopupType.Tutorial:
                 prefab= m_TutorialPopupPrefab;

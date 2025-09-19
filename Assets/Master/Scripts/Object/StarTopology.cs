@@ -20,10 +20,25 @@ public class StarTopology : NetworkTopology
     private Vector3 m_StartPoint;
     private Vector3 m_EndPoint;
     private bool m_IsMovingToSwitch = false;
+    private void Awake()
+    {
+        if (m_DropdownStartNode != null)
+        {
+            m_DropdownStartNode.onValueChanged.AddListener(OnValueChanged);
+        }
+        if (m_DropdownEndNode != null)
+        {
+            m_DropdownEndNode.onValueChanged.AddListener(OnValueChanged);
+        }
+    }
 
     private void Start()
     {
         ResetTopology();
+    }
+    private void OnValueChanged(int value)
+    {
+        AudioManager.Instance.PlayOnShot(SoundType.Toggle);
     }
 
     public override void SendSignal()

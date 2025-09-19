@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 6420727603398311625}
   - component: {fileID: 7404142253183080405}
   - component: {fileID: 915718916967393113}
+  - component: {fileID: 337084868260676986}
   m_Layer: 5
   m_Name: TutorialPopup
   m_TagString: Untagged
@@ -298,6 +299,19 @@ MonoBehaviour:
   m_TextContent: {fileID: 2063077260449798235}
   m_TextButton: {fileID: 8829434704059011971}
   m_ButtonAction: {fileID: 1230638699786366534}
+--- !u!114 &337084868260676986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253303045058611780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4055faf8fc2ecc4687383de45bcc619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Button: {fileID: 1230638699786366534}
 --- !u!1 &8491718831109593459
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +324,7 @@ GameObject:
   - component: {fileID: 684951121137806568}
   - component: {fileID: 3545003400861895752}
   - component: {fileID: 1230638699786366534}
+  - component: {fileID: 2254090152066291877}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -431,6 +446,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2254090152066291877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8491718831109593459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4055faf8fc2ecc4687383de45bcc619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Button: {fileID: 1230638699786366534}
 --- !u!1001 &8599081465343553645
 PrefabInstance:
   m_ObjectHideFlags: 0

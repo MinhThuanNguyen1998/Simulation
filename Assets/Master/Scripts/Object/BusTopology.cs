@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -29,9 +30,25 @@ public class BusTopology : NetworkTopology
     private bool m_IsMovingOnBus = false;
     private bool m_IsMovingFromBus = false;
 
+    private void Awake()
+    {
+        if (m_DropdownStartNode != null)
+        {
+            m_DropdownStartNode.onValueChanged.AddListener(OnValueChanged);
+        }
+        if (m_DropdownEndNode != null)
+        {
+            m_DropdownEndNode.onValueChanged.AddListener(OnValueChanged);
+        }
+    }
+
     private void Start()
     {
         ResetTopology();
+    }
+    private void OnValueChanged(int value)
+    {
+        AudioManager.Instance.PlayOnShot(SoundType.Toggle);
     }
     public override void SendSignal()
     {
@@ -97,6 +114,7 @@ public class BusTopology : NetworkTopology
     }
     private RectTransform GetNodeFromDropdown(TMP_Dropdown dropdown)
     {
+
         switch (dropdown.value)
         {
             case 0: return m_NodeA;
